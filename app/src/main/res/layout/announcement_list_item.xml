@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
+    android:layout_marginBottom="32dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,10 +17,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/photos_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
+            android:background="#ededed"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +28,7 @@
             tools:src="@drawable/lost_dog" />
 
         <TextView
+            android:id="@+id/reward_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -34,12 +38,13 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
-            tools:text="Recompensa" />
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/photos_iv"
+            app:layout_constraintTop_toTopOf="@+id/photos_iv"
+            tools:text="@string/reward" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/pet_profile_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -47,17 +52,20 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            app:layout_constraintTop_toBottomOf="@+id/photos_iv">
 
             <TextView
+                android:id="@+id/pet_name_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:textColor="@android:color/secondary_text_light"
+                android:visibility="gone"
                 tools:text="Nome: Max" />
 
             <TextView
+                android:id="@+id/pet_breed_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -69,67 +77,73 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/pet_profile_container"
             tools:text="TITULO" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
+            android:id="@+id/description_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:textColor="@android:color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/title_tv"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/phone_number_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_icon_iv"
+            app:layout_constraintStart_toEndOf="@+id/phone_icon_iv"
+            app:layout_constraintTop_toTopOf="@+id/phone_icon_iv"
             tools:text="+14 98199-6163" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/phone_icon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_phone_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            tools:src="@drawable/ic_missing" />
+            app:layout_constraintTop_toBottomOf="@+id/description_tv"
+            tools:src="@drawable/ic_phone_black_24dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@android:color/secondary_text_light"
+            android:textColor="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/description_tv"
             tools:text="Ontem as 15:30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

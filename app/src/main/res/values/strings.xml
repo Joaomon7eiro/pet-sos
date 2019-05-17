@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">PetSOS</string>
     <string name="action_settings">Settings</string>
+    <string name="reward">Recompensa</string>
+    <string name="pet_name">Nome: %1$s</string>
+    <string name="pet_breed">Raça: %1$s</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="breed_unknown">Desconhecida</string>
+    <string name="profile">Perfil</string>
+    <string name="search">Buscar</string>
+    <string name="announcements">Anúncios</string>
 </resources>
