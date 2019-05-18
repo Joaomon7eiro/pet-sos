@@ -19,12 +19,14 @@ import java.lang.Exception
 import java.text.DateFormat
 import java.text.DateFormat.SHORT
 
-class AnnouncementAdapter(options: FirestorePagingOptions<Announcement>)
-    : FirestorePagingAdapter<Announcement, AnnouncementAdapter.AnnouncementViewHolder>(options) {
+class AnnouncementAdapter(
+    options: FirestorePagingOptions<Announcement>,
+    private var stateListener: LoadingStateListener
+) : FirestorePagingAdapter<Announcement, AnnouncementAdapter.AnnouncementViewHolder>(options) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.announcement_list_item, parent, false)
+            .inflate(R.layout.announcement_list_item, parent, false)
         return AnnouncementViewHolder(view)
     }
 
@@ -34,10 +36,17 @@ class AnnouncementAdapter(options: FirestorePagingOptions<Announcement>)
 
     override fun onLoadingStateChanged(state: LoadingState) {
         when (state) {
+            LoadingState.LOADED -> stateListener.setLoadingState(false)
+            LoadingState.FINISHED -> stateListener.setLoadingState(false)
+            LoadingState.LOADING_INITIAL -> stateListener.setLoadingState(true)
+            LoadingState.LOADING_MORE -> stateListener.setLoadingState(true)
+            LoadingState.ERROR -> {
+                stateListener.setLoadingState(false)
+                retry()
+            }
+            else -> stateListener.setLoadingState(false)
         }
     }
-
-
 
     class AnnouncementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val photoImageView: ImageView = itemView.findViewById(R.id.photos_iv)
@@ -86,7 +95,7 @@ class AnnouncementAdapter(options: FirestorePagingOptions<Announcement>)
                 petNameTextView.visibility = View.VISIBLE
                 petNameTextView.text = res.getString(R.string.pet_name, petName)
             } else {
-                petBreedTextView.gravity = Gravity.START
+                petBreedTextView.gravity = Gravity.CENTER
             }
 
             var petBreed = announcement.breed

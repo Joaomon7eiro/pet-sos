@@ -1,94 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipe_refresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+<layout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MainActivity"
+        tools:showIn="@layout/activity_main">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:text="@string/announcements"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="@string/announcements" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:padding="16dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/category_filter_dog"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/category_circle_normal"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_dog"
-                    app:layout_constraintBottom_toBottomOf="@id/category_filter_cat"
-                    app:layout_constraintEnd_toStartOf="@id/category_filter_cat"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/category_filter_cat" />
+                    android:layout_gravity="center"
+                    android:text="@string/announcements"
+                    tools:text="@string/announcements"
+                    style="@style/title_text" />
 
-                <ImageButton
-                    android:id="@+id/category_filter_cat"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/category_circle_normal"
-                    android:scaleType="center"
-                    android:scaleX="-1"
-                    android:src="@drawable/ic_cat"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/category_filter_others"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@id/category_filter_dog"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/margin_wide"
+                    android:padding="@dimen/padding_wide">
 
-                <ImageButton
-                    android:id="@+id/category_filter_others"
-                    android:layout_width="wrap_content"
+                    <ImageButton
+                        android:id="@+id/category_filter_dog"
+                        android:src="@drawable/ic_dog"
+                        app:layout_constraintBottom_toBottomOf="@id/category_filter_cat"
+                        app:layout_constraintEnd_toStartOf="@id/category_filter_cat"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/category_filter_cat"
+                        style="@style/category" />
+
+                    <ImageButton
+                        android:id="@+id/category_filter_cat"
+                        android:scaleX="-1"
+                        android:src="@drawable/ic_cat"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/category_filter_others"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@id/category_filter_dog"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/category" />
+
+                    <ImageButton
+                        android:id="@+id/category_filter_others"
+                        android:src="@drawable/ic_parrot"
+                        app:layout_constraintBottom_toBottomOf="@id/category_filter_cat"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@id/category_filter_cat"
+                        app:layout_constraintTop_toTopOf="@id/category_filter_cat"
+                        style="@style/category" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/announcements_rv"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/category_circle_normal"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_parrot"
-                    app:layout_constraintBottom_toBottomOf="@id/category_filter_cat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@id/category_filter_cat"
-                    app:layout_constraintTop_toTopOf="@id/category_filter_cat" />
+                    tools:itemCount="3"
+                    tools:listitem="@layout/announcement_list_item" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/announcements_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="3"
-                tools:listitem="@layout/announcement_list_item" />
+        </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
 
