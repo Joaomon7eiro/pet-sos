@@ -1,150 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_medium"
-    android:layout_marginEnd="@dimen/margin_medium"
-    android:layout_marginBottom="@dimen/margin_wide"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="@dimen/card_corner_radius">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="announcement"
+            type="com.android.petsos.Announcement" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_wide"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
-        <ImageView
-            android:id="@+id/photos_iv"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGrayLight"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/lost_dog" />
-
-        <TextView
-            android:id="@+id/reward_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_short"
-            android:layout_marginTop="@dimen/margin_short"
-            android:background="@drawable/rounded_borders_background"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/reward_text_size"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/photos_iv"
-            app:layout_constraintTop_toTopOf="@+id/photos_iv"
-            tools:text="@string/reward" />
-
-        <LinearLayout
-            android:id="@+id/pet_profile_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/photos_iv">
-
-            <TextView
-                android:id="@+id/pet_name_tv"
-                style="@style/pet_profile_container"
-                android:visibility="gone"
-                tools:text="Nome: Max" />
-
-            <TextView
-                android:id="@+id/pet_breed_tv"
-                style="@style/pet_profile_container"
-                android:gravity="end"
-                tools:text="Raça: Vira Lata" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_short"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_title_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pet_profile_container"
-            tools:text="TITULO" />
-
-        <TextView
-            android:id="@+id/description_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_short"
-            android:ellipsize="end"
-            android:maxLines="5"
-            android:paddingStart="@dimen/padding_medium"
-            android:paddingEnd="@dimen/padding_medium"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_content_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_tv"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_short"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_short"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_tv">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/phone_icon_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_phone_black_24dp"
-                tools:src="@drawable/ic_phone_black_24dp" />
+                android:id="@+id/photos_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrayLight"
+                android:scaleType="fitCenter"
+                app:image="@{announcement}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/lost_dog" />
 
             <TextView
-                android:id="@+id/phone_number_tv"
+                android:id="@+id/reward_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@android:color/black"
+                android:layout_marginStart="@dimen/margin_short"
+                android:layout_marginTop="@dimen/margin_short"
+                android:background="@drawable/rounded_borders_background"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/reward_text_size"
                 android:textStyle="bold"
-                tools:text="+14 98199-6163" />
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/photos_iv"
+                app:layout_constraintTop_toTopOf="@+id/photos_iv"
+                app:reward="@{announcement}"
+                tools:text="@string/reward" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/pet_profile_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/photos_iv">
 
-        <TextView
-            android:id="@+id/time_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_short"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginBottom="@dimen/margin_short"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_tv"
-            tools:text="Ontem as 15:30" />
+                <TextView
+                    android:id="@+id/pet_name_tv"
+                    style="@style/pet_profile_container"
+                    android:visibility="gone"
+                    app:name="@{announcement}"
+                    tools:text="Nome: Max" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/pet_breed_tv"
+                    style="@style/pet_profile_container"
+                    android:gravity="end"
+                    app:breed="@{announcement}"
+                    tools:text="Raça: Vira Lata" />
 
-</androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_short"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_title_size"
+                android:textStyle="bold"
+                app:announcementTitle="@{announcement}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pet_profile_container"
+                tools:text="TITULO" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_short"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:paddingStart="@dimen/padding_medium"
+                android:paddingEnd="@dimen/padding_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_content_size"
+                app:description="@{announcement}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_tv"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_short"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_short"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_tv">
+
+                <ImageView
+                    android:id="@+id/phone_icon_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_phone_black_24dp"
+                    tools:src="@drawable/ic_phone_black_24dp" />
+
+                <TextView
+                    android:id="@+id/phone_number_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:phoneNumber="@{announcement}"
+                    tools:text="+14 98199-6163" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_short"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_short"
+                android:textColor="@android:color/darker_gray"
+                app:date="@{announcement}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_tv"
+                tools:text="Ontem as 15:30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
 
