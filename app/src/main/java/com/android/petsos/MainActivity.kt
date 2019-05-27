@@ -1,5 +1,6 @@
 package com.android.petsos
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -75,23 +76,20 @@ class MainActivity : AppCompatActivity(),
         }
 
         fab.setOnClickListener { view ->
-            val announcement = Announcement(
-                photos = listOf("url"),
-                title = "TITULO",
-                country = "Brasil",
-                state = "SP",
-                city = "Garça",
-                neighborhood = "Williams",
-                address = "Rua alguma 344",
-                phone_number = "14981996163",
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-                type = 2,
-                timestamp = null
-            )
-            FirebaseFirestore.getInstance().collection("announcements").add(announcement)
-
-            Snackbar.make(view, "Added announcement", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this, AddPetActivity::class.java)
+            startActivity(intent)
+//            val announcement = Announcement(
+//                photos = listOf("url"),
+//                title = "TITULO",
+//                location = "Garça",
+//                phone_number = "14981996163",
+//                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+//                type = 2
+//            )
+//            FirebaseFirestore.getInstance().collection("announcements").add(announcement)
+//
+//            Snackbar.make(view, "Added announcement", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
         }
 
         setupAdapter()

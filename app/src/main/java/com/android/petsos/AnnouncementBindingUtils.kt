@@ -37,7 +37,11 @@ fun TextView.setPhoneNumber(announcement: Announcement?) {
 @BindingAdapter("date")
 fun TextView.setDate(announcement: Announcement?) {
     announcement?.let {
-        text = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(announcement.timestamp)
+        try {
+            text = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(announcement.timestamp)
+        } catch (e : Exception) {
+
+        }
     }
 }
 

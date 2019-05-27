@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_pet_nav"
+    app:startDestination="@id/chooseTypeFragment">
+
+    <fragment
+        android:id="@+id/chooseCategoryFragment"
+        android:name="com.android.petsos.ChooseCategoryFragment"
+        android:label="fragment_choose_category"
+        tools:layout="@layout/fragment_choose_category" >
+        <action
+            android:id="@+id/action_chooseCategoryFragment_to_petFormFragment"
+            app:destination="@id/petFormFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/petFormFragment"
+        android:name="com.android.petsos.PetFormFragment"
+        android:label="fragment_pet_form"
+        tools:layout="@layout/fragment_pet_form" >
+        <action
+            android:id="@+id/action_petFormFragment_to_formPreviewFragment"
+            app:destination="@id/formPreviewFragment" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+        <argument
+            android:name="category"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/formPreviewFragment"
+        android:name="com.android.petsos.FormPreviewFragment"
+        android:label="fragment_form_preview"
+        tools:layout="@layout/fragment_form_preview" >
+        <argument
+            android:name="announcement"
+            app:argType="com.android.petsos.Announcement" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseTypeFragment"
+        android:name="com.android.petsos.ChooseTypeFragment"
+        android:label="fragment_choose_type"
+        tools:layout="@layout/fragment_choose_type" >
+        <action
+            android:id="@+id/action_chooseTypeFragment_to_chooseCategoryFragment"
+            app:destination="@id/chooseCategoryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+</navigation>

@@ -9,4 +9,10 @@
     <string name="profile">Perfil</string>
     <string name="search">Buscar</string>
     <string name="announcements">Anúncios</string>
+    <string name="title_activity_add_pet">AddPetActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_location_lost">Localização onde o animal se perdeu</string>
+    <string name="hint_location_found">Localização onde o animal foi encontrado</string>
 </resources>

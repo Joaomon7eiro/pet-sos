@@ -58,7 +58,7 @@
 
                     <ImageButton
                         android:id="@+id/category_filter_others"
-                        android:src="@drawable/ic_parrot"
+                        android:src="@drawable/ic_pet"
                         app:layout_constraintBottom_toBottomOf="@id/category_filter_cat"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
